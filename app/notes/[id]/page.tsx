@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import {
   HydrationBoundary,
   QueryClient,
@@ -7,7 +8,24 @@ import {
 import { fetchNoteById } from "@/lib/api";
 import NoteDetailsClient from "./NoteDetails.client";
 
-export default async function Page({ params }: { params: { id: string } }) {
+type Props = {
+  params: {
+    id: string;
+  };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params;
+
+  const note = await fetchNoteById(id);
+
+  return {
+    title: `Note: ${note.title}`,
+    description: note.content.slice(0, 30),
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { id } = params;
 
   const queryClient = new QueryClient();
@@ -17,10 +35,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     queryFn: () => fetchNoteById(id),
   });
 
-  const dehydratedState = dehydrate(queryClient);
-
   return (
-    <HydrationBoundary state={dehydratedState}>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <NoteDetailsClient id={id} />
     </HydrationBoundary>
   );

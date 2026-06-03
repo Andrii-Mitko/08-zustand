@@ -7,11 +7,22 @@ import {
 import NotesClient from "./Notes.client";
 import { fetchNotes } from "@/lib/api";
 
+import { Metadata } from "next";
+
 type Props = {
-  params: Promise<{
-    slug: string[];
-  }>;
+  params: Promise<{ slug: string[] }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+
+  const tag = slug?.[0];
+
+  return {
+    title: `Notes: ${tag}`,
+    description: `Notes filtered by ${tag}`,
+  };
+}
 
 const FilterPage = async ({ params }: Props) => {
   const { slug } = await params;

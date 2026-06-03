@@ -1,4 +1,10 @@
 import css from "./page.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home - NoteHub",
+  description: "Welcome to NoteHub, your simple and efficient note-taking app",
+};
 
 export default function Home() {
   return (

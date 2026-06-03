@@ -9,13 +9,13 @@ const Header = () => {
       </Link>
       <nav aria-label="Main Navigation">
         <ul className={css.navigation}>
-          <li>
-            <Link className={css.headerLink} href="/">
+          <li className={css.navigationItem}>
+            <Link className={css.navigationLink} href="/">
               Home
             </Link>
           </li>
-          <li>
-            <Link className={css.headerLink} href="/notes/filter/all">
+          <li className={css.navigationItem}>
+            <Link className={css.navigationLink} href="/notes/filter/all">
               Notes
             </Link>
           </li>

@@ -50,8 +50,6 @@ export default function NotesClient({ initialTag }: Props) {
   const notes = data?.notes ?? [];
   const totalPages = data?.totalPages ?? 0;
 
-  const handlePageChange = (page: number) => setPage(page);
-
   return (
     <div className={css.app}>
       <header className={css.toolbar}>

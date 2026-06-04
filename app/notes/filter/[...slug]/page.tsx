@@ -10,17 +10,33 @@ import { fetchNotes } from "@/lib/api";
 import { Metadata } from "next";
 
 type Props = {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{
+    slug: string[];
+  }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-
-  const tag = slug?.[0];
+  const filter = slug?.join("/");
 
   return {
-    title: `Notes: ${tag}`,
-    description: `Notes filtered by ${tag}`,
+    title: `Notes filtered by ${filter}`,
+    description: `List of notes filtered by ${filter}`,
+
+    openGraph: {
+      title: `Notes filtered by ${filter}`,
+      description: `List of notes filtered by ${filter}`,
+      url: `http://localhost:3000/notes/filter/${filter}`,
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Filtered notes",
+        },
+      ],
+      type: "website",
+    },
   };
 }
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import css from "./page.module.css";
 import { Metadata } from "next";
 
@@ -6,10 +7,10 @@ export const metadata: Metadata = {
   description: "Welcome to NoteHub, your simple and efficient note-taking app",
 };
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
-      <main className={css.main}>
+      <div className={css.main}>
         <div className={css.container}>
           <h1 className={css.title}>Welcome to NoteHub</h1>
           <p className={css.description}>
@@ -23,8 +24,17 @@ export default function Home() {
             organization, NoteHub offers a streamlined experience for anyone who
             values clarity and productivity.
           </p>
+          <Image
+            src="https://picsum.photos/seed/picsum/300/300"
+            alt="hero"
+            width={1200}
+            height={800}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
         </div>
-      </main>
+      </div>
     </div>
   );
-}
+};
+export default Home;

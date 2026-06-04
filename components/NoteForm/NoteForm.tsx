@@ -38,7 +38,7 @@ const NoteForm = ({ categories }: Props) => {
   const handleCancel = () => router.push("/notes/filter/all");
   return (
     <form action={handleSubmit} className={css.form}>
-      <label className={css.label}>
+      <label className={css.formGroup}>
         Title
         <input
           name="title"
@@ -49,7 +49,7 @@ const NoteForm = ({ categories }: Props) => {
         />
       </label>
 
-      <label className={css.label}>
+      <label className={css.formGroup}>
         Content
         <textarea
           name="content"
@@ -59,7 +59,7 @@ const NoteForm = ({ categories }: Props) => {
         />
       </label>
 
-      <label className={css.label}>
+      <label className={css.formGroup}>
         Tag
         <select
           name="tag"
@@ -75,7 +75,7 @@ const NoteForm = ({ categories }: Props) => {
         </select>
       </label>
 
-      <div className={css.buttonGroup}>
+      <div className={css.actions}>
         <button type="submit" className={css.submitButton}>
           Create
         </button>

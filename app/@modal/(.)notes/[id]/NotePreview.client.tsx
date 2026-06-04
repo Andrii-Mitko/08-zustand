@@ -20,7 +20,7 @@ export default function NotePreview({ id }: NotePreviewProps) {
     queryKey: ["note", noteId],
     queryFn: () => fetchNoteById(noteId),
     enabled: !!noteId,
-    refetchOnMount: false,
+    staleTime: 1000 * 60 * 5,
     retry: false,
   });
 

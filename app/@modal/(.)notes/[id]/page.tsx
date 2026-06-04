@@ -11,9 +11,9 @@ import { fetchNoteById } from "@/lib/api";
 import { Metadata } from "next";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const ModalNotePage = async ({ params }: Props) => {
-  const { id } = params;
+  const { id } = await params;
 
   const queryClient = new QueryClient();
 

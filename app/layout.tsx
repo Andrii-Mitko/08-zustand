@@ -14,6 +14,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://08-zustand-beta-six.vercel.app"),
   title: "NoteHub",
   description: "Simple and efficient note-taking application",
 

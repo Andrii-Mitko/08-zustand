@@ -11,7 +11,7 @@ type Props = {
 
 const NoteForm = ({ categories }: Props) => {
   const router = useRouter();
-  const { draft, setDraft } = useNoteDraftStore();
+  const { draft, setDraft, clearDraft } = useNoteDraftStore();
 
   const handleChange = (
     event: React.ChangeEvent<
@@ -28,6 +28,7 @@ const NoteForm = ({ categories }: Props) => {
     mutationFn: createNote,
     onSuccess: () => {
       router.push("/notes/filter/all");
+      clearDraft();
     },
   });
 
